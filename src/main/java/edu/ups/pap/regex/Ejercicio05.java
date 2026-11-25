@@ -1,13 +1,26 @@
 package edu.ups.pap.regex;
 
-import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-/** E05: Direcciones IPv4. Contrato completo en README.md. */
+//regex tiene validaciones de la ipv4
 public class Ejercicio05 {
+
+    private static final Pattern REGEX = Pattern.compile(
+            "^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\."
+            + "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\."
+            + "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\."
+            + "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])$"
+    );
+
     public static boolean validar(String texto) {
-        // TODO: implementar exclusivamente este ejercicio.
-        throw new UnsupportedOperationException("E05 pendiente");
+
+        if (texto == null || texto.isEmpty()) {
+            return false;
+        }
+
+        Matcher matcher = REGEX.matcher(texto);
+
+        return matcher.matches();
     }
 }
